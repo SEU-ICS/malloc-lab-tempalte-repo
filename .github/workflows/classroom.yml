@@ -1,0 +1,240 @@
+name: Autograding Tests
+on:
+  - push
+  - workflow_dispatch
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+          - name: prepare-test-env
+      id: prepare-test-env
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: prepare-test-env
+        setup-command: ''
+        command: git clone https://github.com/SEU-ICS/lab.git lab-ref && cp -f ./mm.c lab-ref/malloc/mm.c && cd lab-ref/malloc && make CFLAGS='-O3 -g -DDRIVER -DUSE_MACRO -DUSE_GCC_BUILTIN' -B
+        timeout: 10
+    - name: testcase-01
+      id: testcase-01
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-01
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/amptjp.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-02
+      id: testcase-02
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-02
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/cccp.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-03
+      id: testcase-03
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-03
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/coalescing-bal.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-04
+      id: testcase-04
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-04
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/corners.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-05
+      id: testcase-05
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-05
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/cp-decl.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-06
+      id: testcase-06
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-06
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/hostname.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-07
+      id: testcase-07
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-07
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/login.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-08
+      id: testcase-08
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-08
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/ls.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-09
+      id: testcase-09
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-09
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/malloc-free.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-10
+      id: testcase-10
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-10
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/malloc.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-11
+      id: testcase-11
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-11
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/perl.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-12
+      id: testcase-12
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-12
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/random.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-13
+      id: testcase-13
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-13
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/rm.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-14
+      id: testcase-14
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-14
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/short2.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-15
+      id: testcase-15
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-15
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/boat.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-16
+      id: testcase-16
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-16
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/lrucd.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-17
+      id: testcase-17
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-17
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/alaska.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-18
+      id: testcase-18
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-18
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/nlydf.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-19
+      id: testcase-19
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-19
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/qyqyc.rep
+        timeout: 5
+        max-score: 4
+    - name: testcase-20
+      id: testcase-20
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testcase-20
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver -c ./traces/rulsr.rep
+        timeout: 5
+        max-score: 4
+    - name: perf-1
+      id: perf-1
+      uses: SEU-ICS/autograding-command-grader@v1
+      with:
+        test-name: perf-1
+        setup-command: ''
+        command: cd lab-ref/malloc && ./mdriver
+        timeout: 300
+        max-score: 100
+    - name: Autograding Reporter
+      uses: SEU-ICS/autograding-grading-reporter@v1
+      env:
+        PREPARE-TEST-ENV_RESULTS: "${steps.prepare-test-env.outputs.result}"
+        TESTCASE-01_RESULTS: "${steps.testcase-01.outputs.result}"
+        TESTCASE-02_RESULTS: "${steps.testcase-02.outputs.result}"
+        TESTCASE-03_RESULTS: "${steps.testcase-03.outputs.result}"
+        TESTCASE-04_RESULTS: "${steps.testcase-04.outputs.result}"
+        TESTCASE-05_RESULTS: "${steps.testcase-05.outputs.result}"
+        TESTCASE-06_RESULTS: "${steps.testcase-06.outputs.result}"
+        TESTCASE-07_RESULTS: "${steps.testcase-07.outputs.result}"
+        TESTCASE-08_RESULTS: "${steps.testcase-08.outputs.result}"
+        TESTCASE-09_RESULTS: "${steps.testcase-09.outputs.result}"
+        TESTCASE-10_RESULTS: "${steps.testcase-10.outputs.result}"
+        TESTCASE-11_RESULTS: "${steps.testcase-11.outputs.result}"
+        TESTCASE-12_RESULTS: "${steps.testcase-12.outputs.result}"
+        TESTCASE-13_RESULTS: "${steps.testcase-13.outputs.result}"
+        TESTCASE-14_RESULTS: "${steps.testcase-14.outputs.result}"
+        TESTCASE-15_RESULTS: "${steps.testcase-15.outputs.result}"
+        TESTCASE-16_RESULTS: "${steps.testcase-16.outputs.result}"
+        TESTCASE-17_RESULTS: "${steps.testcase-17.outputs.result}"
+        TESTCASE-18_RESULTS: "${steps.testcase-18.outputs.result}"
+        TESTCASE-19_RESULTS: "${steps.testcase-19.outputs.result}"
+        TESTCASE-20_RESULTS: "${steps.testcase-20.outputs.result}"
+        PERF-1_RESULTS: "${steps.perf-1.outputs.result}"
+      with:
+        prepare-test-env,testcase-01,testcase-02,testcase-03,testcase-04,testcase-05,testcase-06,testcase-07,testcase-08,testcase-09,testcase-10,testcase-11,testcase-12,testcase-13,testcase-14,testcase-15,testcase-16,testcase-17,testcase-18,testcase-19,testcase-20,perf-1
