@@ -237,4 +237,4 @@ jobs:
         TESTCASE-20_RESULTS: "${steps.testcase-20.outputs.result}"
         PERF-1_RESULTS: "${steps.perf-1.outputs.result}"
       with:
-        prepare-test-env,testcase-01,testcase-02,testcase-03,testcase-04,testcase-05,testcase-06,testcase-07,testcase-08,testcase-09,testcase-10,testcase-11,testcase-12,testcase-13,testcase-14,testcase-15,testcase-16,testcase-17,testcase-18,testcase-19,testcase-20,perf-1
+        runners: prepare-test-env,testcase-01,testcase-02,testcase-03,testcase-04,testcase-05,testcase-06,testcase-07,testcase-08,testcase-09,testcase-10,testcase-11,testcase-12,testcase-13,testcase-14,testcase-15,testcase-16,testcase-17,testcase-18,testcase-19,testcase-20,perf-1
