@@ -208,7 +208,7 @@ jobs:
       with:
         test-name: perf1
         setup-command: ''
-        command: cd lab-ref/malloc && ./mdriver
+        command: cd lab-ref/malloc && ./mdriver -v 0
         timeout: 300
         max-score: 100
     - name: Autograding Reporter
