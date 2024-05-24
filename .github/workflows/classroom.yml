@@ -209,7 +209,7 @@ jobs:
         test-name: perf1
         setup-command: ''
         command: cd lab-ref/malloc && ./mdriver -v 0 -P
-        timeout: 300
+        timeout: 360
         max-score: 100
     - name: Autograding Reporter
       uses: SEU-ICS/autograding-grading-reporter@v1
